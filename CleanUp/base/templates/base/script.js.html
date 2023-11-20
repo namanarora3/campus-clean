@@ -1,0 +1,41 @@
+<script type="text/javascript">
+const taskList = document.querySelectorAll('.list.task.worker');
+const overlay = document.querySelector('.overlay');
+const modal = document.querySelector('.modall');
+console.log(overlay, modal, 'naman');
+
+const openModal = function (x, index) {
+  console.log(index);
+  const modal = document.querySelector(`.modall.${index}`);
+
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+  // let s = `{{tasks.${index}.location`;
+  // s += '}}';
+  // console.log(s);
+
+  // document.querySelector('.image-name').textContent = '{{task.name}}';
+  // document.querySelector('.image-location').textContent = `{{task.location}}`;
+};
+
+const closeModal = function () {
+  const popup = document.querySelectorAll('.upload-image')
+  for(const i of popup){
+    i.classList.add('hidden');
+
+  }
+  overlay.classList.add('hidden');
+};
+
+for(const a of taskList){
+  a.addEventListener('click', function(){
+    console.log(Number(a.classList[4].slice(5)));
+    openModal(Number(a.classList[4].slice(5)), a.classList[4]);
+  })
+}
+
+overlay.addEventListener('click', function () {
+  closeModal();
+})
+
+</script>
